@@ -1,0 +1,171 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Shop Admin</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8 mx-auto">
+          <h3 class="display-4 text-center">Quản Lý Kho</h3>
+          <form id="formQLSV">
+            <div class="row">
+              <div class="col-8 form-group" id="colMa">
+                <label for="">Mã Sản Phẩm : </label>
+                <input type="text" class="form-control" id="txtMa" />
+                <span id="spanMaSV" class="text-danger"></span>
+              </div>
+              <div class="col-8 form-group">
+                <label for="">Tên Sản Phẩm : </label>
+                <input type="text" class="form-control" id="txtTen" />
+                <span id="spanTenSV" class="text-danger"></span>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="col-8 form-group">
+                <label for="">Giá : </label>
+                <input type="text" class="form-control" id="txtPrice" />
+                <span id="spanPrice" class="text-danger"></span>
+              </div>
+              <div class="col-8 form-group">
+                <label for="">Miêu Tả : </label>
+                <input type="text" class="form-control" id="txtDesc" />
+                <span id="desc" class="text-danger"></span>
+              </div>
+              <div class="col-8 form-group">
+                <label for="">Link Ảnh : </label>
+                <input type="text" class="form-control" id="img" />
+                <span id="spanAnh" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8 form-group">
+                <label for="">Màng Hình : </label>
+                <input type="text" class="form-control" id="txtScreen" />
+                <span id="spanScreen" class="text-danger"></span>
+              </div>
+              <div class="col-8 form-group">
+                <label for="">Type: </label>
+                <select name="" id="type" class="form-control">
+                  <option value="">Chọn Type</option>
+                  <option value="iphone">iphone</option>
+                  <option value="samsung">samsung</option>
+                </select>
+                <span id="spanType" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 form-group">
+                <label for="">camera trước : </label>
+                <input type="text" class="form-control" id="txtFront" />
+                <span id="spanFcam" class="text-danger"></span>
+              </div>
+              <div class="col-4 form-group">
+                <label for="">camera sau : </label>
+                <input type="text" class="form-control" id="txtBack" />
+                <span id="spanBcam" class="text-danger"></span>
+              </div>
+            </div>
+            
+
+            <div class="form-group text-center">
+              <div id="btnCreate">
+                <button
+                  type="button"
+                  onclick="createStudent()"
+                  class="btn btn-success"
+                >
+                  Thêm Sản Phẩm
+                </button>
+
+                <button onclick="resetSpan()" type="reset" id="btnReset" class="btn btn-dark">
+                  Reset
+                </button>
+              </div>
+              <button
+                id="btnUpdate"
+                style="display: none"
+                type="button"
+                onclick="updateStudent()"
+                class="btn btn-info"
+              >
+                Lưu thay đổi
+              </button>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-9 form-group">
+              <input
+                oninput="searchStudents()"
+                placeholder="Nhập tên hoặc mã sản phẩm"
+                type="text"
+                class="form-control"
+                id="txtSearch"
+              />
+            </div>
+            <div class="col-3 form-group">
+              <button id="btnSearch" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 mx-auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Miêu tả</th>
+                <th>Màng hình</th>
+                <th>Type</th>
+                <th>Camera trước</th>
+                <th>Camera sau</th>
+                <th>Ảnh</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbodySinhVien"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+      integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- CORS :Cross origin resource sharing -->
+
+    <script src="./models/student.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -299,9 +299,9 @@ function updateStudent() {
 
       // clear toàn bộ input
       document.getElementById("btnReset").click();
+    
+      document.getElementById("colMa").style.display = "none";
 
-      // mở lại input mã sinh viên
-      document.getElementById("txtMa").disabled = false;
     })
     .catch(function (err) {
       console.log(err);
@@ -320,18 +320,6 @@ function required(val, spanId) {
   return true;
 }
 
-// // min length ,max length
-function length(val, spanId, min, max) {
-  if (val.length < min || val.length > max) {
-    document.getElementById(
-      spanId
-    ).innerHTML = `*Độ dài phải từ ${min} tới ${max} kí tự`;
-    return false;
-  }
-
-  document.getElementById(spanId).innerHTML = "";
-  return true;
-}
 
 // // pattern check name
 function checkString(val, spanId) {
@@ -367,69 +355,3 @@ function resetSpan(){
   return;
 }
 
-
-
-// pattern check desc
-
-// pattern check number
-
-// synchronous: đồng bộ
-// var a = 5;
-// var b = 10;
-// var sum = a + b;
-// console.log("tổng");
-// console.log(sum);
-
-// asynchronous : bất đồng bộ
-// callback: function a truyền vào function b   đầu vào
-
-// setTimeout(function () {
-//   console.log("hello");
-// }, 2000);
-
-// setTimeout(function () {
-//   console.log("hello 2");
-// }, 3000);
-
-// setTimeout(function () {
-//   console.log("hello 4");
-// }, 0);
-
-// console.log("hello 5");
-// console.log("hello 6");
-// console.log("hello 7");
-
-// setTimeout(function () {
-//   console.log("hello 8");
-// }, 1000);
-
-// // for(var i = 0; i < 10000000000000000000000000000000; i++){
-// //   console.log('hqweqwi')
-// // }
-
-// function test() {
-//   console.log("a");
-// }
-
-// function test2() {
-//   console.log("b");
-// }
-
-// function test3() {
-//   console.log("c");
-
-//   function test4() {
-//     console.log("d");
-
-//     function test5() {
-//       console.log("e");
-//     }
-//     test5();
-//   }
-
-//   test4();
-// }
-
-// test();
-// test2();
-// test3();
